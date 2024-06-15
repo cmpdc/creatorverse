@@ -1,0 +1,21 @@
+.wide {
+	width: 100%;
+	height: var(--headerHeight);
+	position: relative;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.links {
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.button {
+	display: block;
+}

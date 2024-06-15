@@ -1,0 +1,103 @@
+{
+    "env": {
+        "browser": true,
+        "es2020": true
+    },
+    "extends": [
+        "react-app"
+    ],
+    "ignorePatterns": [
+        "dist",
+        ".eslintrc"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react-refresh",
+        "unused-imports",
+        "import"
+    ],
+    "root": true,
+    "rules": {
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    [
+                        "unknown"
+                    ], // For unnamed imports
+                    [
+                        "style"
+                    ], // For CSS/SCSS files
+                    [
+                        "builtin",
+                        "external",
+                        "internal"
+                    ],
+                    [
+                        "parent",
+                        "sibling",
+                        "index"
+                    ]
+                ],
+                "pathGroups": [
+                    {
+                        "pattern": "**/*.css",
+                        "group": "style",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "**/*.scss",
+                        "group": "style",
+                        "position": "before"
+                    }
+                ],
+                "newlines-between": "always",
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ],
+        "import/no-unused-modules": [
+            "warn",
+            {
+                "unusedExports": true
+            }
+        ],
+        "react-refresh/only-export-components": [
+            "warn",
+            {
+                "allowConstantExport": true
+            }
+        ],
+        "react/jsx-no-target-blank": "off",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+        "react/react-in-jsx-scope": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+            "warn",
+            {
+                "args": "after-used",
+                "argsIgnorePattern": "^_",
+                "vars": "all",
+                "varsIgnorePattern": "^_"
+            }
+        ]
+    },
+    "settings": {
+        "react": {
+            "version": "18.2"
+        }
+    }
+}

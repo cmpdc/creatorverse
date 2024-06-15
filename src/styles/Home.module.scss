@@ -1,0 +1,24 @@
+.home {
+	display: block;
+}
+
+.grid {
+	display: flex;
+}
+
+.gridEmpty {
+	width: 100%;
+	height: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	span {
+		color: rgba(#fff, 0.6);
+		font-weight: 600;
+	}
+}
+
+.gridColumn {
+	background-clip: padding-box;
+}
