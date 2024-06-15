@@ -4,13 +4,6 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
 	plugins: [react()],
-	build: {
-		rollupOptions: {
-			input: {
-				main: resolve(__dirname, "public/index.html"),
-			},
-		},
-	},
 	resolve: {
 		extensions: [".scss", ".js", ".jsx"],
 		alias: {
