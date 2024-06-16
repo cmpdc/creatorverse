@@ -1,0 +1,38 @@
+.spacing {
+	margin: 15px 0 !important;
+}
+
+.label {
+	position: relative;
+	display: flex;
+	flex-flow: row;
+	gap: 1ch;
+
+	span {
+		color: #aaaaaa;
+
+		&:before {
+			content: "—";
+			margin-right: 1ch;
+		}
+	}
+}
+
+.description {
+	min-height: 20ch;
+	resize: vertical;
+}
+
+.buttonContainer {
+	display: flex;
+	flex-flow: row;
+	gap: 10px;
+
+	> button {
+		flex: 1;
+	}
+}
+
+.submit {
+	min-width: 40px;
+}

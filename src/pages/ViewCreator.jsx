@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { FaTwitch } from "react-icons/fa";
+import { GrYoutube } from "react-icons/gr";
+import { Link, useParams } from "react-router-dom";
 import { supabase } from "../client";
+import ContentWrapper from "../components/ContentWrapper";
+import Header from "../components/Header";
 import styles from "../styles/ViewCreator.module";
 
 const ViewCreator = () => {
 	const { id } = useParams();
+
 	const [creator, setCreator] = useState(null);
 
 	useEffect(() => {
@@ -21,19 +26,55 @@ const ViewCreator = () => {
 		fetchCreator();
 	}, [id]);
 
-	if (!creator) {
-		return <div>Loading...</div>;
-	}
-
 	return (
-		<div className={styles["view-creator"]}>
-			<h1>{creator.name}</h1>
-			<img src={creator.imageURL} alt={creator.name} />
-			<p>{creator.description}</p>
-			<a href={creator.url} target="_blank" rel="noopener noreferrer">
-				Visit
-			</a>
-		</div>
+		<>
+			<Header />
+			<ContentWrapper>
+				<div className={styles["view-creator"]}>
+					{creator ? (
+						<>
+							<div className={styles["top"]}>
+								<div className={styles["avatar"]}>
+									<img src={creator.imageURL} alt={creator.name} />
+								</div>
+								<div className={styles["right"]}>
+									<h1>{creator.name}</h1>
+									<div className={styles["links"]}>
+										{creator.url_youtube && (
+											<a className={styles["youtube"]} href={creator.url_youtube} target="_blank" rel="noopener noreferrer">
+												<GrYoutube color={"#ff0000"} />
+												<span>{creator.url_youtube}</span>
+											</a>
+										)}
+										{creator.url_twitch && (
+											<a className={styles["twitch"]} href={creator.url_twitch} target="_blank" rel="noopener noreferrer">
+												<FaTwitch color={"#9146ff"} />
+												<span>{creator.url_twitch}</span>
+											</a>
+										)}
+									</div>
+									<div className={styles["buttonContainer"]}>
+										<Link to={`/edit/${creator.id}`}>Edit</Link>
+										<a
+											onClick={() => {
+												if (!onDelete) return;
+
+												onDelete(creator.id);
+											}}
+										>
+											Delete
+										</a>
+									</div>
+								</div>
+							</div>
+							<div className={styles["description"]}>{creator.description}</div>
+						</>
+					) : (
+						<div>Loading...</div>
+					)}
+				</div>
+			</ContentWrapper>
+		</>
 	);
 };
 

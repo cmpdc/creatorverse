@@ -1,5 +1,19 @@
+header[class*="sm"] ~ .content {
+	min-height: calc(100vh - (var(--headerHeight) / 1.5));
+}
+
 .content {
-	height: calc(100vh - var(--headerHeight));
-	padding: 20px;
+	height: auto;
+	min-height: calc(100vh - var(--headerHeight));
+	box-shadow: 0 0 10px rgba(#000, 0.5);
+	position: relative;
+	padding: 30px 60px;
 	display: block;
+	z-index: 2;
+}
+
+@media screen and (max-width: 850px) {
+	.content {
+		padding: 30px 40px;
+	}
 }
