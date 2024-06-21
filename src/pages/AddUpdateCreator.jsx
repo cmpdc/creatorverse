@@ -18,10 +18,12 @@ const AddUpdateCreator = ({ type }) => {
 
 	useEffect(() => {
 		const fetchCreator = async () => {
+            if (!id) return;
+
 			const { data, error } = await supabase.from("creators").select("*").eq("id", id).single();
 
 			if (error) {
-				console.error("Error fetching creator:", error);
+                console.log(error);
 			} else {
 				setName(data.name);
 				setDescription(data.description);
