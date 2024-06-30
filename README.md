@@ -36,9 +36,7 @@ The following **additional** features are implemented:
 
 Here"s a walkthrough of implemented required features:
 
-![GIF Walkthrough](https://i.imgur.com/tTiVfhD.gif)
-
-GIF created with ShareX
+[Walkthrough video](https://i.imgur.com/tTiVfhD.mp4)
 
 ## Notes
 
