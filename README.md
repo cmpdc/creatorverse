@@ -1,10 +1,10 @@
 # WEB103 Prework - _CreatorVerse_
 
-Submitted by: **Christian**
+Submitted by: 👉🏿 **Christian**
 
-About this web app: **Prework - WEB103**
+About this web app: 👉🏿 **Prework - WEB103**
 
-Time spent: **10** hours
+Time spent: 👉🏿 **10** hours
 
 ## Required Features
 
@@ -36,7 +36,7 @@ The following **additional** features are implemented:
 
 Here"s a walkthrough of implemented required features:
 
-<img src="https://i.imgur.com/yl6wL1b.gif" title="Video Walkthrough" width="" alt="Video Walkthrough" />
+![GIF Walkthrough](https://i.imgur.com/tTiVfhD.gif)
 
 GIF created with ShareX
 

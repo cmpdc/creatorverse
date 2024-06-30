@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaTwitch } from "react-icons/fa";
 import { GrYoutube } from "react-icons/gr";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { supabase } from "../client";
 import ContentWrapper from "../components/ContentWrapper";
 import Header from "../components/Header";
@@ -9,29 +9,50 @@ import styles from "../styles/ViewCreator.module";
 
 const ViewCreator = () => {
 	const { id } = useParams();
+	const navigate = useNavigate();
 
 	const [creator, setCreator] = useState(null);
+	const [fetchError, setFetchError] = useState(false);
 
 	useEffect(() => {
 		const fetchCreator = async () => {
-			const { data, error } = await supabase.from("creators").select("*").eq("id", id).single();
+			try {
+				const { data, error } = await supabase.from("creators").select("*").eq("id", id).single();
 
-			if (error) {
-				console.error("Error fetching creator:", error);
-			} else {
-				setCreator(data);
+				if (error) {
+					setFetchError(true);
+				} else {
+					setCreator(data);
+					setFetchError(false);
+				}
+			} catch (e) {
+				setFetchError(true);
 			}
 		};
 
 		fetchCreator();
 	}, [id]);
 
+	const onDelete = async (id) => {
+		try {
+			const { error } = await supabase.from("creators").delete().eq("id", id);
+
+			if (error) {
+				console.error("Error deleting creator:", error);
+			} else {
+				navigate("/");
+			}
+		} catch (e) {}
+	};
+
 	return (
 		<>
 			<Header />
 			<ContentWrapper>
 				<div className={styles["view-creator"]}>
-					{creator ? (
+					{fetchError ? (
+						<div>Creator not found</div>
+					) : creator ? (
 						<>
 							<div className={styles["top"]}>
 								<div className={styles["avatar"]}>
